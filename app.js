@@ -3,7 +3,9 @@ let path = require('path');
 let favicon = require('serve-favicon');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
+let mongoose = require('mongoose');
 
+// express settings
 let hello = require('./routes/hello');
 let app = express();
 
@@ -32,3 +34,9 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+// mongoDB settings
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost/mevn-stack', { promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('connection succesful'))
+  .catch((err) => console.error(err));
