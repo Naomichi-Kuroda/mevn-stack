@@ -6,14 +6,14 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 
 // express settings
-let hello = require('./routes/hello');
+let character = require('./routes/character');
 let app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
-app.use('/hello', hello);
+app.use('/character', character);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
