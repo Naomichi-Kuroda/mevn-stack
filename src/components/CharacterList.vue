@@ -50,6 +50,9 @@ export default {
     }
   },
   methods: {
+    setJwtToken () {
+      axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
+    },
     fetchCharacterList () {
       axios.get(`http://localhost:3000/character`)
         .then(response => {
@@ -73,6 +76,7 @@ export default {
     }
   },
   created () {
+    this.setJwtToken()
     this.fetchCharacterList()
   }
 }
