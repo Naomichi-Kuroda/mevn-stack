@@ -1,14 +1,25 @@
 <template>
   <section class="app">
     <app-header/>
-    <b-container fruid>
-      <main class="my-5">
+    <main class="app-main my-5">
+      <b-container fruid>
         <router-view/>
-      </main>
-    </b-container>
+      </b-container>
+    </main>
     <app-footer/>
   </section>
 </template>
+
+<style scoped lang="scss">
+  .app {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    &-main {
+      flex: 1;
+    }
+  }
+</style>
 
 <script>
 import AppHeader from '@/components/AppHeader'

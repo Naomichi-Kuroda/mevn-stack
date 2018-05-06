@@ -2,7 +2,7 @@
   <section class="character-creation">
     <b-row>
       <b-col cols="12">
-        <h2 class="character-creation-title mb-3">Character Creation</h2>
+        <h1 class="character-creation-title bg-info text-white mb-3">Character Creation</h1>
         <b-btn class="mb-3" :to="{ name: 'CharacterList' }" variant="primary">Character List</b-btn>
         <b-form @submit="onSubmit">
           <b-form-group id="fieldsetHorizontal"
@@ -22,11 +22,10 @@
 <style scoped lang="scss">
   .character-creation {
     &-title {
-      padding: 6px 12px;
+      padding: 8px 16px;
+      font-size: 2rem;
       text-align: center;
       box-sizing: border-box;
-      color: #ffffff;
-      background-color: #293c66;
       border-radius: 32px;
     }
   }

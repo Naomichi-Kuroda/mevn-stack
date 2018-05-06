@@ -2,7 +2,7 @@
   <section class="character-detail">
     <b-row>
       <b-col cols="12">
-        <h2 class="character-detail-title mb-3">Character Detail</h2>
+        <h1 class="character-detail-title bg-info text-white mb-3">Character Detail</h1>
         <b-btn class="mb-3" :to="{ name: 'CharacterList' }" variant="primary">Character List</b-btn>
         <b-jumbotron class="py-4">
           <template slot="lead">
@@ -21,11 +21,10 @@
 <style scoped lang="scss">
   .character-detail {
     &-title {
-      padding: 6px 12px;
+      padding: 8px 16px;
+      font-size: 2rem;
       text-align: center;
       box-sizing: border-box;
-      color: #ffffff;
-      background-color: #293c66;
       border-radius: 32px;
     }
   }

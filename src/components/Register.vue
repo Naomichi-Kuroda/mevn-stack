@@ -2,8 +2,7 @@
   <section class="register">
     <b-row class="justify-content-md-center">
       <b-col cols="6">
-        <h2 class="register-title mb-3">Register</h2>
-        <h2>Please Register</h2>
+        <h1 class="register-title bg-light text-dark mb-3">Register</h1>
         <div v-if="errors && errors.length">
           <div v-for="(error, index) in errors" :key="index">
             <b-alert show>{{error.message}}</b-alert>
@@ -35,11 +34,10 @@
 <style scoped lang="scss">
   .register {
     &-title {
-      padding: 6px 12px;
+      padding: 8px 16px;
+      font-size: 2rem;
       text-align: center;
       box-sizing: border-box;
-      color: #ffffff;
-      background-color: #293c66;
       border-radius: 32px;
     }
   }

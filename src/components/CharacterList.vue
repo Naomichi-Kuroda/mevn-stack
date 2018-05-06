@@ -2,7 +2,7 @@
   <section class="character-list">
     <b-row>
       <b-col cols="12">
-        <h2 class="character-list-title mb-3">Character List</h2>
+        <h1 class="character-list-title bg-info text-white mb-3">Character List</h1>
         <b-btn class="mb-3" :to="{ name: 'CharacterCreation' }" variant="primary">Add Character</b-btn>
         <b-table class="character-list-table" striped hover :items="characters" :fields="fields">
           <template slot="actions" slot-scope="row">
@@ -24,11 +24,10 @@
 <style scoped lang="scss">
   .character-list {
     &-title {
-      padding: 6px 12px;
+      padding: 8px 16px;
+      font-size: 2rem;
       text-align: center;
       box-sizing: border-box;
-      color: #ffffff;
-      background-color: #293c66;
       border-radius: 32px;
     }
   }
