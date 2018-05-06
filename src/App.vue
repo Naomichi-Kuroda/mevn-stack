@@ -1,22 +1,24 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <section class="app">
+    <app-header/>
+    <b-container fruid>
+      <main class="my-5">
+        <router-view/>
+      </main>
+    </b-container>
+    <app-footer/>
+  </section>
 </template>
 
 <script>
+import AppHeader from '@/components/AppHeader'
+import AppFooter from '@/components/AppFooter'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    AppHeader,
+    AppFooter
+  }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
