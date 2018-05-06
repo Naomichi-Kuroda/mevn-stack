@@ -53,7 +53,7 @@ export default {
     },
     editCharacter (characterid) {
       this.$router.push({
-        name: 'EditCharacter',
+        name: 'CharacterEditing',
         params: { id: characterid }
       })
     },

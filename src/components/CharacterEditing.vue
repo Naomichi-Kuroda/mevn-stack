@@ -1,18 +1,18 @@
 <template>
-  <section class="character-creation">
+  <section class="character-editing">
     <b-row>
       <b-col cols="12">
-        <h2 class="character-creation-title mb-3">Character Creation</h2>
-        <b-btn class="mb-3" :to="{ name: 'CharacterList' }" variant="primary">Character List</b-btn>
+        <h2 class="character-editing-title mb-3">Character Editing</h2>
+        <b-btn class="mb-3" :to="{ name: 'CharacterDetail' }" variant="primary">Show Character</b-btn>
         <b-form @submit="onSubmit">
           <b-form-group id="fieldsetHorizontal"
                         horizontal
-                        :label-cols="2"
+                        :label-cols="4"
                         breakpoint="md"
                         label="Enter Name">
             <b-form-input id="name" v-model.trim="character.name"></b-form-input>
           </b-form-group>
-          <b-button type="submit" variant="warning">Save</b-button>
+          <b-button type="submit" variant="warning">Update</b-button>
         </b-form>
       </b-col>
     </b-row>
@@ -20,7 +20,7 @@
 </template>
 
 <style scoped lang="scss">
-  .character-creation {
+  .character-editing {
     &-title {
       padding: 6px 12px;
       text-align: center;
@@ -36,28 +36,38 @@
 import axios from 'axios'
 
 export default {
-  name: 'CharacterCreation',
+  name: 'CharacterEditing',
   data () {
     return {
-      character: {
-        name: ''
-      }
+      character: {}
     }
   },
   methods: {
-    onSubmit (event) {
-      event.preventDefault()
-      axios.post(`http://localhost:3000/character`, this.character)
+    fetchCharacter () {
+      axios.get(`http://localhost:3000/character/` + this.$route.params.id)
+        .then(response => {
+          this.character = response.data
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+    },
+    onSubmit (evt) {
+      evt.preventDefault()
+      axios.put(`http://localhost:3000/character/` + this.$route.params.id, this.character)
         .then(response => {
           this.$router.push({
             name: 'CharacterDetail',
-            params: { id: response.data._id }
+            params: { id: this.$route.params.id }
           })
         })
         .catch(e => {
           this.errors.push(e)
         })
     }
+  },
+  created () {
+    this.fetchCharacter()
   }
 }
 </script>
