@@ -6,8 +6,9 @@ let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 
 // express settings
-let character = require('./routes/character');
 let app = express();
+let auth = require('./routes/auth');
+let character = require('./routes/character');
 
 // allow cors
 app.use(function (req, res, next) {
@@ -27,6 +28,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/api/auth', auth);
 app.use('/character', character);
 
 // catch 404 and forward to error handler
