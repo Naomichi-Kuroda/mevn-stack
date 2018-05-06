@@ -3,7 +3,7 @@
     <b-row>
       <b-col cols="12">
         <h2 class="character-list-title mb-3">Character List</h2>
-        <b-btn class="mb-3" :to="{ name: 'CreateCharacter' }" variant="primary">Add Character</b-btn>
+        <b-btn class="mb-3" :to="{ name: 'CharacterCreation' }" variant="primary">Add Character</b-btn>
         <b-table class="character-list-table" striped hover :items="characters" :fields="fields">
           <template slot="actions" slot-scope="row">
             <b-btn size="sm" variant="outline-secondary" :to="{ name: 'CharacterDetail', params: { id: row.item._id } }">Detail</b-btn>
