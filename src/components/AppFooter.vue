@@ -8,7 +8,7 @@
   .app-footer {
     text-align: center;
     color: #ffffff;
-    font-size: .8rem;
+    font-size: .5rem;
   }
 </style>
 
