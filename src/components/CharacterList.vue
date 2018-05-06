@@ -6,7 +6,7 @@
         <b-btn class="mb-3" :to="{ name: 'CreateCharacter' }" variant="primary">Add Character</b-btn>
         <b-table class="character-list-table" striped hover :items="characters" :fields="fields">
           <template slot="actions" slot-scope="row">
-            <b-btn size="sm" variant="outline-secondary" :to="{ name: 'ShowCharacter', params: { id: row.item._id } }">Detail</b-btn>
+            <b-btn size="sm" variant="outline-secondary" :to="{ name: 'CharacterDetail', params: { id: row.item._id } }">Detail</b-btn>
             <b-btn size="sm" variant="outline-success" :to="{ name: 'EditCharacter', params: { id: row.item._id } }">Edit</b-btn>
             <b-btn size="sm" variant="outline-danger" @click.stop="deleteCharacter(row.item._id)">Delete</b-btn>
           </template>
@@ -50,7 +50,7 @@ export default {
     }
   },
   methods: {
-    fetchCharacter () {
+    fetchCharacterList () {
       axios.get(`http://localhost:3000/character`)
         .then(response => {
           this.characters = response.data
@@ -65,7 +65,7 @@ export default {
           this.$router.push({
             name: 'CharacterList'
           })
-          this.fetchCharacter()
+          this.fetchCharacterList()
         })
         .catch(e => {
           this.errors.push(e)
@@ -73,7 +73,7 @@ export default {
     }
   },
   created () {
-    this.fetchCharacter()
+    this.fetchCharacterList()
   }
 }
 </script>

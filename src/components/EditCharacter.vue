@@ -3,7 +3,7 @@
     <b-col cols="12">
       <h2>
         Edit Character
-        <router-link :to="{ name: 'ShowCharacter', params: { id: character._id } }">(Show Character)</router-link>
+        <router-link :to="{ name: 'CharacterDetail', params: { id: character._id } }">(Show Character)</router-link>
       </h2>
       <b-form @submit="onSubmit">
         <b-form-group id="fieldsetHorizontal"
@@ -44,7 +44,7 @@ export default {
       axios.put(`http://localhost:3000/character/` + this.$route.params.id, this.character)
         .then(response => {
           this.$router.push({
-            name: 'ShowCharacter',
+            name: 'CharacterDetail',
             params: { id: this.$route.params.id }
           })
         })

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import CharacterList from '@/components/CharacterList'
-import ShowCharacter from '@/components/ShowCharacter'
+import CharacterDetail from '@/components/CharacterDetail'
 import CreateCharacter from '@/components/CreateCharacter'
 import EditCharacter from '@/components/EditCharacter'
 
@@ -17,8 +17,8 @@ export default new Router({
     },
     {
       path: '/show-character/:id',
-      name: 'ShowCharacter',
-      component: ShowCharacter
+      name: 'CharacterDetail',
+      component: CharacterDetail
     },
     {
       path: '/add-character',

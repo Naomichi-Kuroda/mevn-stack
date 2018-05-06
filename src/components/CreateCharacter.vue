@@ -37,7 +37,7 @@ export default {
       axios.post(`http://localhost:3000/character`, this.character)
         .then(response => {
           this.$router.push({
-            name: 'ShowCharacter',
+            name: 'CharacterDetail',
             params: { id: response.data._id }
           })
         })
