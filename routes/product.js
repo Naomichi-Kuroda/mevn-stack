@@ -1,6 +1,6 @@
 let express = require('express')
 let router = express.Router()
-let Character = require('../models/Character')
+let Product = require('../models/Product')
 
 let passport = require('passport')
 require('../config/passport')(passport)
@@ -22,9 +22,9 @@ function getToken (headers) {
 router.get('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   let token = getToken(req.headers)
   if (token) {
-    Character.find((err, characters) => {
+    Product.find((err, products) => {
       if (err) return next(err)
-      res.json(characters)
+      res.json(products)
     })
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'})
@@ -35,7 +35,7 @@ router.get('/', passport.authenticate('jwt', {session: false}), (req, res, next)
 router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   let token = getToken(req.headers)
   if (token) {
-    Character.findById(req.params.id, (err, post) => {
+    Product.findById(req.params.id, (err, post) => {
       if (err) return next(err)
       res.json(post)
     })
@@ -48,7 +48,7 @@ router.get('/:id', passport.authenticate('jwt', {session: false}), (req, res, ne
 router.post('/', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   let token = getToken(req.headers)
   if (token) {
-    Character.create(req.body, (err, post) => {
+    Product.create(req.body, (err, post) => {
       if (err) return next(err)
       res.json(post)
     })
@@ -61,7 +61,7 @@ router.post('/', passport.authenticate('jwt', {session: false}), (req, res, next
 router.put('/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   let token = getToken(req.headers)
   if (token) {
-    Character.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
+    Product.findByIdAndUpdate(req.params.id, req.body, (err, post) => {
       if (err) return next(err)
       res.json(post)
     })
@@ -74,7 +74,7 @@ router.put('/:id', passport.authenticate('jwt', {session: false}), (req, res, ne
 router.delete('/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {
   let token = getToken(req.headers)
   if (token) {
-    Character.findByIdAndRemove(req.params.id, req.body, (err, post) => {
+    Product.findByIdAndRemove(req.params.id, req.body, (err, post) => {
       if (err) return next(err)
       res.json(post)
     })

@@ -13,14 +13,14 @@
                         horizontal
                         :label-cols="4"
                         breakpoint="md"
-                        label="Enter Username">
+                        label="Username">
             <b-form-input id="username" v-model.trim="login.username"></b-form-input>
           </b-form-group>
           <b-form-group class="fieldsetHorizontal"
                         horizontal
                         :label-cols="4"
                         breakpoint="md"
-                        label="Enter Password">
+                        label="Password">
             <b-form-input type="password" id="password" v-model.trim="login.password"></b-form-input>
           </b-form-group>
           <b-button type="submit" variant="primary">Login</b-button>
@@ -61,7 +61,7 @@ export default {
         .then(response => {
           localStorage.setItem('jwtToken', response.data.token)
           this.$router.push({
-            name: 'CharacterList'
+            name: 'ProductList'
           })
         })
         .catch(e => {

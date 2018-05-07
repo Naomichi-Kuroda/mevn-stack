@@ -8,7 +8,7 @@ let mongoose = require('mongoose');
 // express settings
 let app = express();
 let auth = require('./routes/auth');
-let character = require('./routes/character');
+let product = require('./routes/product');
 
 // allow cors
 app.use(function (req, res, next) {
@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/api/auth', auth);
-app.use('/character', character);
+app.use('/product', product);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

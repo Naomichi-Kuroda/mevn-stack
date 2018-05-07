@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from '@/components/Login'
 import Register from '@/components/Register'
-import CharacterList from '@/components/CharacterList'
-import CharacterDetail from '@/components/CharacterDetail'
-import CharacterCreation from '@/components/CharacterCreation'
-import CharacterEditing from '@/components/CharacterEditing'
+import ProductList from '@/components/ProductList'
+import ProductDetail from '@/components/ProductDetail'
+import ProductCreation from '@/components/ProductCreation'
+import ProductEditing from '@/components/ProductEditing'
 
 Vue.use(Router)
 
@@ -24,23 +24,23 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'CharacterList',
-      component: CharacterList
+      name: 'ProductList',
+      component: ProductList
     },
     {
-      path: '/show-character/:id',
-      name: 'CharacterDetail',
-      component: CharacterDetail
+      path: '/show-product/:id',
+      name: 'ProductDetail',
+      component: ProductDetail
     },
     {
-      path: '/character-creation',
-      name: 'CharacterCreation',
-      component: CharacterCreation
+      path: '/product-creation',
+      name: 'ProductCreation',
+      component: ProductCreation
     },
     {
-      path: '/edit-character/:id',
-      name: 'CharacterEditing',
-      component: CharacterEditing
+      path: '/edit-product/:id',
+      name: 'ProductEditing',
+      component: ProductEditing
     }
   ]
 })

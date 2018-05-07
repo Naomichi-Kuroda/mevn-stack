@@ -13,18 +13,18 @@
                         horizontal
                         :label-cols="4"
                         breakpoint="md"
-                        label="Enter Username">
+                        label="Username">
             <b-form-input id="username" v-model.trim="register.username"></b-form-input>
           </b-form-group>
           <b-form-group class="fieldsetHorizontal"
                         horizontal
                         :label-cols="4"
                         breakpoint="md"
-                        label="Enter Password">
+                        label="Password">
             <b-form-input type="password" id="password" v-model.trim="register.password"></b-form-input>
           </b-form-group>
           <b-button type="submit" variant="primary">Register</b-button>
-          <b-button type="button" variant="success" @click="$router.go(-1)">Cancel</b-button>
+          <b-button type="button" variant="outline-secondary" @click="$router.go(-1)">Cancel</b-button>
         </b-form>
       </b-col>
     </b-row>

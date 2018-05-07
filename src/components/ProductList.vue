@@ -1,14 +1,14 @@
 <template>
-  <section class="character-list">
+  <section class="product-list">
     <b-row>
       <b-col cols="12">
-        <h1 class="character-list-title bg-info text-white mb-3">Character List</h1>
-        <b-btn class="mb-3" :to="{ name: 'CharacterCreation' }" variant="primary">Add Character</b-btn>
-        <b-table class="character-list-table" striped hover :items="characters" :fields="fields">
+        <h1 class="product-list-title bg-info text-white mb-3">Product List</h1>
+        <b-btn class="mb-3" :to="{ name: 'ProductCreation' }" variant="primary">Add Product</b-btn>
+        <b-table class="product-list-table" striped hover :items="products" :fields="fields">
           <template slot="actions" slot-scope="row">
-            <b-btn size="sm" variant="outline-secondary" :to="{ name: 'CharacterDetail', params: { id: row.item._id } }">Detail</b-btn>
-            <b-btn size="sm" variant="outline-success" :to="{ name: 'CharacterEditing', params: { id: row.item._id } }">Edit</b-btn>
-            <b-btn size="sm" variant="outline-danger" @click.stop="deleteCharacter(row.item._id)">Delete</b-btn>
+            <b-btn size="sm" variant="outline-secondary" :to="{ name: 'ProductDetail', params: { id: row.item._id } }">Detail</b-btn>
+            <b-btn size="sm" variant="outline-success" :to="{ name: 'ProductEditing', params: { id: row.item._id } }">Edit</b-btn>
+            <b-btn size="sm" variant="outline-danger" @click.stop="deleteProduct(row.item._id)">Delete</b-btn>
           </template>
         </b-table>
         <ul v-if="errors && errors.length">
@@ -22,7 +22,7 @@
 </template>
 
 <style scoped lang="scss">
-  .character-list {
+  .product-list {
     &-title {
       padding: 8px 16px;
       font-size: 2rem;
@@ -37,14 +37,14 @@
 import axios from 'axios'
 
 export default {
-  name: 'CharacterList',
+  name: 'ProductList',
   data () {
     return {
       fields: {
-        name: { label: 'Character Name', sortable: true, 'class': 'align-middle' },
+        name: { label: 'Product Name', sortable: true, 'class': 'align-middle' },
         actions: { label: 'Action', 'class': 'text-center' }
       },
-      characters: [],
+      products: [],
       errors: []
     }
   },
@@ -52,22 +52,22 @@ export default {
     setJwtToken () {
       axios.defaults.headers.common['Authorization'] = localStorage.getItem('jwtToken')
     },
-    fetchCharacterList () {
-      axios.get(`http://localhost:3000/character`)
+    fetchProductList () {
+      axios.get(`http://localhost:3000/product`)
         .then(response => {
-          this.characters = response.data
+          this.products = response.data
         })
         .catch(e => {
           this.errors.push(e)
         })
     },
-    deleteCharacter (characterId) {
-      axios.delete('http://localhost:3000/character/' + characterId)
+    deleteProduct (productId) {
+      axios.delete('http://localhost:3000/product/' + productId)
         .then((result) => {
           this.$router.push({
-            name: 'CharacterList'
+            name: 'ProductList'
           })
-          this.fetchCharacterList()
+          this.fetchProductList()
         })
         .catch(e => {
           this.errors.push(e)
@@ -76,7 +76,7 @@ export default {
   },
   created () {
     this.setJwtToken()
-    this.fetchCharacterList()
+    this.fetchProductList()
   }
 }
 </script>

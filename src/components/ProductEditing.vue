@@ -1,16 +1,16 @@
 <template>
-  <section class="character-editing">
+  <section class="product-editing">
     <b-row>
       <b-col cols="12">
-        <h1 class="character-editing-title bg-info text-white mb-3">Character Editing</h1>
-        <b-btn class="mb-3" :to="{ name: 'CharacterDetail' }" variant="primary">Show Character</b-btn>
+        <h1 class="product-editing-title bg-info text-white mb-3">Product Editing</h1>
+        <b-btn class="mb-3" :to="{ name: 'ProductDetail' }" variant="primary">Show Product</b-btn>
         <b-form @submit="onSubmit">
           <b-form-group id="fieldsetHorizontal"
                         horizontal
                         :label-cols="4"
                         breakpoint="md"
                         label="Enter Name">
-            <b-form-input id="name" v-model.trim="character.name"></b-form-input>
+            <b-form-input id="name" v-model.trim="product.name"></b-form-input>
           </b-form-group>
           <b-button type="submit" variant="warning">Update</b-button>
         </b-form>
@@ -20,7 +20,7 @@
 </template>
 
 <style scoped lang="scss">
-  .character-editing {
+  .product-editing {
     &-title {
       padding: 8px 16px;
       font-size: 2rem;
@@ -35,17 +35,17 @@
 import axios from 'axios'
 
 export default {
-  name: 'CharacterEditing',
+  name: 'ProductEditing',
   data () {
     return {
-      character: {}
+      product: {}
     }
   },
   methods: {
-    fetchCharacter () {
-      axios.get(`http://localhost:3000/character/` + this.$route.params.id)
+    fetchProduct () {
+      axios.get(`http://localhost:3000/product/` + this.$route.params.id)
         .then(response => {
-          this.character = response.data
+          this.product = response.data
         })
         .catch(e => {
           this.errors.push(e)
@@ -53,10 +53,10 @@ export default {
     },
     onSubmit (evt) {
       evt.preventDefault()
-      axios.put(`http://localhost:3000/character/` + this.$route.params.id, this.character)
+      axios.put(`http://localhost:3000/product/` + this.$route.params.id, this.product)
         .then(response => {
           this.$router.push({
-            name: 'CharacterDetail',
+            name: 'ProductDetail',
             params: { id: this.$route.params.id }
           })
         })
@@ -66,7 +66,7 @@ export default {
     }
   },
   created () {
-    this.fetchCharacter()
+    this.fetchProduct()
   }
 }
 </script>
